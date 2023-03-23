@@ -67,7 +67,7 @@ func TestCreateCompletionStream(t *testing.T) {
 	ctx := context.Background()
 
 	request := CompletionRequest{
-		Prompt:    "Ex falso quodlibet",
+		Prompt:    []string{"Ex falso quodlibet"},
 		Model:     "text-davinci-002",
 		MaxTokens: 10,
 		Stream:    true,
@@ -158,7 +158,7 @@ func TestCreateCompletionStreamError(t *testing.T) {
 	request := CompletionRequest{
 		MaxTokens: 5,
 		Model:     GPT3TextDavinci003,
-		Prompt:    "Hello!",
+		Prompt:    []string{"Hello!"},
 		Stream:    true,
 	}
 

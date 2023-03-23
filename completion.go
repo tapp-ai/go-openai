@@ -80,7 +80,7 @@ func checkEndpointSupportsModel(endpoint, model string) bool {
 // CompletionRequest represents a request structure for completion API.
 type CompletionRequest struct {
 	Model            string         `json:"model"`
-	Prompt           string         `json:"prompt,omitempty"`
+	Prompt           []string       `json:"prompt,omitempty"`
 	Suffix           string         `json:"suffix,omitempty"`
 	MaxTokens        int            `json:"max_tokens,omitempty"`
 	Temperature      float32        `json:"temperature,omitempty"`

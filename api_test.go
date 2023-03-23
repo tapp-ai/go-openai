@@ -89,7 +89,7 @@ func TestAPI(t *testing.T) {
 	}
 
 	stream, err := c.CreateCompletionStream(ctx, CompletionRequest{
-		Prompt:    "Ex falso quodlibet",
+		Prompt:    []string{"Ex falso quodlibet"},
 		Model:     GPT3Ada,
 		MaxTokens: 5,
 		Stream:    true,

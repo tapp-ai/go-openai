@@ -64,7 +64,7 @@ func TestCompletions(t *testing.T) {
 		MaxTokens: 5,
 		Model:     "ada",
 	}
-	req.Prompt = "Lorem ipsum"
+	req.Prompt = []string{"Lorem ipsum"}
 	_, err = client.CreateCompletion(ctx, req)
 	if err != nil {
 		t.Fatalf("CreateCompletion error: %v", err)
@@ -99,14 +99,14 @@ func handleCompletionEndpoint(w http.ResponseWriter, r *http.Request) {
 		// generate a random string of length completionReq.Length
 		completionStr := strings.Repeat("a", completionReq.MaxTokens)
 		if completionReq.Echo {
-			completionStr = completionReq.Prompt + completionStr
+			completionStr = completionReq.Prompt[0] + completionStr
 		}
 		res.Choices = append(res.Choices, CompletionChoice{
 			Text:  completionStr,
 			Index: i,
 		})
 	}
-	inputTokens := numTokens(completionReq.Prompt) * completionReq.N
+	inputTokens := numTokens(completionReq.Prompt[0]) * completionReq.N
 	completionTokens := completionReq.MaxTokens * completionReq.N
 	res.Usage = Usage{
 		PromptTokens:     inputTokens,
