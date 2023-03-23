@@ -1,7 +1,7 @@
 package openai_test
 
 import (
-	. "github.com/sashabaranov/go-openai"
+	. "github.com/tapp-ai/go-openai"
 
 	"context"
 	"errors"
